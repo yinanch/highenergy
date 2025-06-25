@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
                 <div class="container">
                     <a class="navbar-brand d-flex align-items-center" href="index.html">
-                        <img src="images/logo.png" alt="高能时域天文" width="40" class="me-2">
+                        <img src="images/logo.jepg" alt="高能时域天文" width="40" class="me-2">
                         <span>高能时域天文课题组</span>
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
