@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             <li class="nav-item"><a class="nav-link" href="past_achievements.html">往日成就</a></li>
                             <li class="nav-item"><a class="nav-link" href="news.html">组内风尚</a></li>
                             <li class="nav-item"><a class="nav-link" href="readings.html">推荐读物</a></li>
-                            <li class="nav-item"><a class="nav-link" href="readings.html">招生信息</a></li>
+                            <li class="nav-item"><a class="nav-link" href="recruit.html">招生信息</a></li>
                         </ul>
                     </div>
                 </div>
