@@ -26,7 +26,13 @@
     {
         "category": "硕士研究生",
         "members": [
-            
+            {
+                "name": "陈亦南",
+                "title": "硕士一年级",
+                "photo": "images/cyn.jpeg",
+                "period": "2022年至今",
+                "homepage": "https://yinanch.github.io/yinanchen.github.io/"
+            }
         ]
     },
     {
