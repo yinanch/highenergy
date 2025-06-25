@@ -44,7 +44,6 @@ function createAchievementCard(item) {
                 <div class="card-body">
                     <h5 class="card-title">${item.title}</h5>
                     <p class="card-text"><small class="text-muted">${item.authors} • ${item.date}</small></p>
-                    <p class="card-text">${item.summary}</p>
                 </div>
                 <div class="card-footer bg-white">
                     <a href="${item.link}" class="btn btn-sm btn-outline-primary">阅读全文</a>
@@ -63,7 +62,6 @@ function createAchievementItem(item) {
                 <small>${item.date}</small>
             </div>
             <p class="mb-1"><em>${item.authors}</em></p>
-            <p class="mb-1">${item.summary}</p>
             <a href="${item.link}" class="text-decoration-none">阅读全文</a>
         </div>
     `;
