@@ -66,7 +66,6 @@ function renderMembers(categories) {
                         <div class="member-info">
                             <h3 class="member-name">${member.name}</h3>
                             <div class="member-period">${member.title} | ${member.period}</div>
-                            <p class="mb-3">${member.bio}</p>
                             ${member.homepage ? `<a href="${member.homepage}" class="member-link" target="_blank">个人主页</a>` : ''}
                         </div>
                     </div>
@@ -105,7 +104,6 @@ function setupSearch() {
         memberCards.forEach(card => {
             const name = card.querySelector('.member-name').textContent.toLowerCase();
             const title = card.querySelector('.member-title').textContent.toLowerCase();
-            const bio = card.querySelector('.member-bio').textContent.toLowerCase();
             
             if (name.includes(searchTerm) || title.includes(searchTerm) || bio.includes(searchTerm)) {
                 card.closest('.col-lg-4').style.display = '';
