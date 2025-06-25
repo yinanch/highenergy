@@ -2,7 +2,7 @@
 title: 中国科大高能时域天文课题组
 description: 中国科学技术大学高能时域天文研究组官方网站
 baseurl: "" # 网站根路径
-url: "https://你的用户名.github.io" # 网站完整URL
+url: "https://yinanch.github.io/highenergy/" # 网站完整URL
 
 # Jekyll设置
 theme: minima # 使用默认主题
@@ -10,7 +10,7 @@ plugins:
   - jekyll-feed # 支持RSS订阅
 
 # 自定义变量
-logo: "/assets/images/logo.png" # 网站logo路径
+logo: "/assets/images/logo.jpg" # 网站logo路径
 
 # 成员分类配置
 member_categories:
