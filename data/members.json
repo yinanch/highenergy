@@ -1,0 +1,44 @@
+[
+    {
+        "category": "导师",
+        "members": [
+            {
+                "name": "戴子高",
+                "title": "教授、博士生导师",
+                "photo": "images/dzg.jpeg",
+                "period": "2019年至今",
+                "homepage": "https://astro.ustc.edu.cn/2021/0713/c14965a516965/page.htm"
+            }
+        ]
+    },
+    {
+        "category": "博士后",
+        "members": [
+            
+        ]
+    },
+    {
+        "category": "博士研究生",
+        "members": [
+
+        ]
+    },
+    {
+        "category": "硕士研究生",
+        "members": [
+            
+        ]
+    },
+    {
+        "category": "本科生",
+        "members": [
+            
+        ]
+    },
+    {
+        "category": "毕业生",
+        "members": [
+            
+        ]
+    }
+]
