@@ -1,0 +1,19 @@
+# 研究成果数据库
+# 格式：
+# - title: 文章标题
+#   authors: 作者列表
+#   date: 发表日期（YYYY-MM-DD）
+#   link: 文章链接
+#   highlight: 是否高亮显示（可选）
+
+# 最新成果（带highlight标记）
+- title: "The Extreme Faraday Effect in Fast Radio Bursts"
+  authors: "黄余晨；戴子高"
+  date: 2025-05
+  link: "https://iopscience.iop.org/article/10.3847/2041-8213/adc55e"
+  highlight: true
+
+# 往日成就（不带highlight标记）
+
+
+# 可继续添加其他文章...

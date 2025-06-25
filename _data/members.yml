@@ -1,0 +1,17 @@
+# 成员数据库
+# 格式：
+# - name: 姓名
+#   category: 类别（需与_config.yml中的member_categories一致）
+#   photo: 照片文件名（存放在assets/images/members/）
+#   period: 在校时间
+#   homepage: 个人主页URL（可选）
+
+# 导师
+- name: 戴子高教授
+  category: 导师
+  photo: dzg.jpg
+  period: 2019-至今
+  homepage: "https://astro.ustc.edu.cn/2021/0713/c14965a516965/page.htm"
+
+
+# 可继续添加其他成员...  
