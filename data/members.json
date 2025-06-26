@@ -20,7 +20,13 @@
     {
         "category": "博士研究生",
         "members": [
-
+            {
+                "name": "张彪",
+                "title": "博士二年级",
+                "photo": "images/zb.jpg",
+                "period": "2021年至今",
+                "homepage": "..."
+            }
         ]
     },
     {
