@@ -6,10 +6,9 @@
       "author": "王德焴",
       "year": 2020,
       "publisher": "科学出版社",
-      "description": "本书系统介绍了高能天体物理的基本概念、研究方法和最新进展...",
-      "category": "books",
+      "description": "本书系统介绍了高能天体物理的基本概念、研究方法和最新进展，涵盖黑洞、中子星、伽玛射线暴等高能天体现象。",
       "link": "#"
-    },
+    }
   ],
   "papers": [
     {
@@ -20,8 +19,7 @@
       "year": 2021,
       "volume": "908",
       "pages": "L46",
-      "description": "基于Fermi卫星观测数据，提出了新的伽玛射线暴分类方案...",
-      "category": "papers",
+      "description": "基于Fermi卫星观测数据，提出了新的伽玛射线暴分类方案，揭示了短暴和长暴之间的连续分布特征。",
       "link": "#"
     }
   ]
