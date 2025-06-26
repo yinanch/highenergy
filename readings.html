@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>推荐读物 - 中国科大高能时域天文课题组</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="../styles/style.css" rel="stylesheet">
+    <style>
+        /* 保留原有的自定义样式 */
+        :root {
+            --primary-color: #0d3b66;
+            --secondary-color: #1a659e;
+            --accent-color: #ff6b35;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .hero-banner {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            padding: 4rem 0;
+            text-align: center;
+            color: white;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><polygon points="0,0 100,100 0,100" fill="rgba(255,255,255,0.05)"/></svg>');
+            background-size: 100% 100%;
+        }
+        
+        .hero-logo {
+            max-width: 120px;
+            height: auto;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 0 8px rgba(0,0,0,0.3));
+        }
+        
+        .section-title {
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+        
+        .category-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 0.8rem;
+            padding: 5px 10px;
+            border-radius: 20px;
+        }
+        
+        .book-card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            height: 100%;
+        }
+        
+        .book-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .book-cover {
+            height: 220px;
+            background-color: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 3rem;
+        }
+        
+        .book-info {
+            padding: 20px;
+        }
+        
+        .literature-item {
+            border-left: 3px solid var(--secondary-color);
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            background: white;
+            border-radius: 0 5px 5px 0;
+            transition: all 0.3s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .literature-item:hover {
+            border-left-width: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .search-container {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+        }
+        
+        .category-filter {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .category-btn {
+            border: 2px solid var(--secondary-color);
+            background: transparent;
+            color: var(--secondary-color);
+            border-radius: 30px;
+            padding: 5px 15px;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .category-btn:hover, .category-btn.active {
+            background: var(--secondary-color);
+            color: white;
+        }
+        
+        .btn-read {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 6px 15px;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .btn-read:hover {
+            background: #e05a2a;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(255, 107, 53, 0.3);
+        }
+        
+        footer {
+            background: var(--primary-color);
+            color: white;
+            padding: 3rem 0 2rem;
+            margin-top: 4rem;
+        }
+        
+        .footer-logo {
+            max-width: 80px;
+            margin-bottom: 15px;
+        }
+        
+        .social-links a {
+            color: rgba(255,255,255,0.7);
+            font-size: 1.5rem;
+            margin-right: 15px;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--accent-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            opacity: 0;
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-banner {
+                padding: 2.5rem 0;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏由loadNavbar.js动态加载 -->
+    <div id="navbar-container"></div>
+    <!-- 横幅区 -->
+    <header class="hero-banner">
+        <div class="container">
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iMTIwIiB2aWV3Qm94PSIwIDAgMjQgMjQiPjxwYXRoIGZpbGw9IndoaXRlIiBkPSJNMTIsMTJDMTYsOCAyMCwxMCAyMCwxNEMyMCwxOCAxNiwyMCAxMiwxOEM3LDIwIDQsMTggNCwxNEM0LDEwIDgsOCAxMiwxMk0xMiw4TDE2LDEyTDEyLDE2TDgsMTJMMTIsOFoiLz48L3N2Zz4=" alt="高能时域天文课题组" class="hero-logo">
+            <h1 class="display-4 fw-bold">推荐读物</h1>
+            <p class="lead">高能时域天文领域经典书籍与重要文献</p>
+        </div>
+    </header>
+
+    <!-- 主要内容 -->
+    <main class="container mb-5">
+    <!-- 搜索和筛选区域 -->
+        <div class="search-container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text bg-primary text-white"><i class="fas fa-search"></i></span>
+                        <input type="text" id="searchInput" class="form-control form-control-lg" placeholder="搜索书籍或文献...">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 书籍部分 -->
+        <section class="mb-5">
+            <h2 class="section-title"><i class="fas fa-book me-2"></i>推荐书籍</h2>
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="booksContainer">
+                <!-- 书籍卡片将通过JavaScript加载 -->
+            </div>
+        </section>
+        
+        <!-- 经典文献部分 -->
+        <section>
+            <h2 class="section-title"><i class="fas fa-file-alt me-2"></i>经典文献</h2>
+            <div class="literature-list" id="papersContainer">
+                <!-- 文献条目将通过JavaScript加载 -->
+            </div>
+        </section>
+    </main>
+
+    <<!-- 页脚 -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>中国科大高能时域天文课题组</h5>
+                    <p>中国科学技术大学 物理学院 天文学系<br>安徽省合肥市金寨路96号</p>
+                </div>
+            </div>
+            <hr class="bg-light">
+        </div>
+    </footer>
+
+    <!-- 返回顶部按钮 -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../scripts/loadReadings.js"></script>
+</body>
+</html>
