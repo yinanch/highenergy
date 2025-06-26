@@ -11,6 +11,11 @@ function renderBooks(books) {
     
     container.innerHTML = '';
     
+    if (books.length === 0) {
+        container.innerHTML = '<div class="col-12 text-center py-5"><p>暂无书籍数据</p></div>';
+        return;
+    }
+    
     books.forEach(book => {
         const card = document.createElement('div');
         card.className = 'col';
@@ -42,6 +47,11 @@ function renderPapers(papers) {
     
     container.innerHTML = '';
     
+    if (papers.length === 0) {
+        container.innerHTML = '<div class="text-center py-5"><p>暂无文献数据</p></div>';
+        return;
+    }
+    
     papers.forEach(paper => {
         const item = document.createElement('div');
         item.className = 'literature-item';
@@ -63,25 +73,35 @@ function renderPapers(papers) {
     });
 }
 
+// 检查是否有结果显示
+function checkResults() {
+    const booksContainer = document.getElementById('booksContainer');
+    const papersContainer = document.getElementById('papersContainer');
+    const noResults = document.getElementById('noResults');
+    
+    const booksVisible = booksContainer.children.length > 0 && 
+        !booksContainer.children[0].innerText.includes('暂无书籍数据');
+        
+    const papersVisible = papersContainer.children.length > 0 && 
+        !papersContainer.children[0].innerText.includes('暂无文献数据');
+        
+    if (!booksVisible && !papersVisible) {
+        noResults.style.display = 'block';
+    } else {
+        noResults.style.display = 'none';
+    }
+}
+
 // 过滤和渲染读物
 function filterAndRender(category = 'all') {
     let filteredBooks = [...readingsData.books];
     let filteredPapers = [...readingsData.papers];
     
     // 应用分类筛选
-    if (category !== 'all') {
-        if (category === 'books') {
-            filteredPapers = [];
-        } else if (category === 'papers') {
-            filteredBooks = [];
-        } else {
-            filteredBooks = readingsData.books.filter(book => 
-                book.category.includes(category)
-            );
-            filteredPapers = readingsData.papers.filter(paper => 
-                paper.category.includes(category)
-            );
-        }
+    if (category === 'books') {
+        filteredPapers = [];
+    } else if (category === 'papers') {
+        filteredBooks = [];
     }
     
     // 应用搜索
@@ -103,64 +123,58 @@ function filterAndRender(category = 'all') {
     // 渲染结果
     renderBooks(filteredBooks);
     renderPapers(filteredPapers);
+    
+    // 检查是否有结果显示
+    checkResults();
 }
 
-// 初始化页面功能
-function initPage() {
-    // 加载数据
-    fetch('../data/readings.json')
-        .then(response => response.json())
-        .then(data => {
-            readingsData = data;
+// 初始化页面
+document.addEventListener('DOMContentLoaded', function() {
+    // 初始渲染
+    renderBooks(readingsData.books);
+    renderPapers(readingsData.papers);
+    
+    // 设置分类按钮事件
+    const categoryBtns = document.querySelectorAll('.category-btn');
+    categoryBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            // 更新按钮状态
+            categoryBtns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
             
-            // 初始渲染
-            renderBooks(data.books);
-            renderPapers(data.papers);
-            
-            // 设置分类按钮事件
-            const categoryBtns = document.querySelectorAll('.category-btn');
-            categoryBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    // 更新按钮状态
-                    categoryBtns.forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // 过滤和渲染
-                    const category = this.getAttribute('data-category');
-                    filterAndRender(category);
-                });
-            });
-            
-            // 搜索功能
-            const searchInput = document.getElementById('searchInput');
-            searchInput.addEventListener('input', () => {
-                const activeCategory = document.querySelector('.category-btn.active').getAttribute('data-category');
-                filterAndRender(activeCategory);
-            });
-            
-            
-            // 返回顶部按钮功能
-            const backToTopBtn = document.querySelector('.back-to-top');
-            if (backToTopBtn) {
-                window.addEventListener('scroll', function() {
-                    if (window.pageYOffset > 300) {
-                        backToTopBtn.classList.add('show');
-                    } else {
-                        backToTopBtn.classList.remove('show');
-                    }
-                });
-                
-                backToTopBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
-                });
+            // 过滤和渲染
+            const category = this.getAttribute('data-category');
+            filterAndRender(category);
+        });
+    });
+    
+    // 搜索功能
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', () => {
+        const activeCategory = document.querySelector('.category-btn.active').getAttribute('data-category');
+        filterAndRender(activeCategory);
+    });
+    
+    // 返回顶部按钮功能
+    const backToTopBtn = document.querySelector('.back-to-top');
+    if (backToTopBtn) {
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
             }
-        })
-        .catch(error => console.error('加载推荐读物数据失败:', error));
-}
+        });
+        
+        backToTopBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+})
 
 // 当文档加载完成后初始化页面
 document.addEventListener('DOMContentLoaded', initPage);
