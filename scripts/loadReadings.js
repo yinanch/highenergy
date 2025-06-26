@@ -25,7 +25,6 @@ function renderBooks(books) {
                     <i class="fas fa-book-open text-primary"></i>
                 </div>
                 <div class="book-info">
-                    <span class="badge bg-primary category-badge">书籍</span>
                     <h5 class="fw-bold">${book.title}</h5>
                     <p class="text-muted">${book.author} · ${book.year}</p>
                     <p class="mb-3">${book.description}</p>
@@ -62,9 +61,6 @@ function renderPapers(papers) {
                     <p class="mb-1"><em>${paper.authors}</em></p>
                     <p class="mb-1">${paper.journal} <strong>${paper.volume}</strong>, ${paper.pages} (${paper.year})</p>
                     <p class="mb-2">${paper.description}</p>
-                </div>
-                <div>
-                    <span class="badge bg-secondary">文献</span>
                 </div>
             </div>
             <a href="${paper.link}" class="btn btn-read mt-2">阅读全文</a>
