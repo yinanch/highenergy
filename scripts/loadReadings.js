@@ -131,7 +131,7 @@ function filterAndRender(category = 'all') {
 // 初始化页面功能
 function initPage() {
     // 加载数据
-    fetch('../data/readings.json')
+    fetch('data/readings.json')
         .then(response => {
             if (!response.ok) {
                 throw new Error('网络响应不正常');
