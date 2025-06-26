@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学术交流 - 中国科大高能时域天文课题组</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="styles/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <div id="navbar-container"></div>
+
+    <!-- 页面标题 -->
+    <header class="subpage-header bg-primary text-white py-5">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold">学术交流</h1>
+            <p class="lead mb-0">分享前沿研究动态，促进学术交流合作</p>
+        </div>
+    </header>
+
+    <!-- 内容区 -->
+    <main class="container py-5">
+        <!-- 搜索和筛选区域 -->
+        <div class="row mb-4">
+            <div class="col-md-8 mb-3 mb-md-0">
+                <div class="input-group">
+                    <span class="input-group-text bg-white border-end-0"><i class="fas fa-search text-muted"></i></span>
+                    <input type="text" class="form-control border-start-0" id="searchInput" placeholder="搜索新闻、活动或研讨会...">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="d-flex justify-content-md-end">
+                    <div class="dropdown">
+                        <button class="btn btn-outline-primary dropdown-toggle" type="button" id="filterDropdown" data-bs-toggle="dropdown">
+                            <i class="fas fa-filter me-2"></i>按类别筛选
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item filter-option" href="#" data-filter="all">全部内容</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item filter-option" href="#" data-filter="research">研究进展</a></li>
+                            <li><a class="dropdown-item filter-option" href="#" data-filter="seminar">学术讲座</a></li>
+                            <li><a class="dropdown-item filter-option" href="#" data-filter="conference">学术会议</a></li>
+                            <li><a class="dropdown-item filter-option" href="#" data-filter="award">获奖信息</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 新闻展示区 -->
+        <div class="row">
+            <div class="col-12 mb-4">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h3 class="mb-0">最新学术动态</h3>
+                    <div>
+                        <span class="badge bg-primary me-2" id="activeFilter">全部内容</span>
+                        <span class="text-muted" id="resultCount">共加载 0 条记录</span>
+                    </div>
+                </div>
+                <hr class="mt-2">
+            </div>
+            
+            <div class="col-lg-8" id="newsList">
+                <!-- 新闻列表将通过JavaScript动态加载 -->
+                <div class="d-flex justify-content-center my-5">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">加载中...</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
+                <!-- 微信公众号提示 -->
+                <div class="card border-primary mb-4">
+                    <div class="card-header bg-primary text-white">
+                        <i class="fab fa-weixin me-2"></i>关注微信公众号
+                    </div>
+                    <div class="card-body text-center">
+                        <img src="images/wechat_qr.jpg" alt="微信公众号二维码" class="img-fluid mb-3" style="max-width: 200px;">
+                        <p class="card-text">扫码关注我们的微信公众号，获取最新学术动态和活动通知</p>
+                        <a href="#" class="btn btn-outline-primary">
+                            <i class="fab fa-weixin me-2"></i>查看历史文章
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>中国科大高能时域天文课题组</h5>
+                    <p>中国科学技术大学 物理学院 天文学系<br>安徽省合肥市金寨路96号</p>
+                </div>
+            </div>
+            <hr class="bg-light">
+        </div>
+    </footer>
+
+    <!-- 脚本加载 -->
+    <script src="scripts/loadNavbar.js"></script>
+    <script src="scripts/loadNews.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- 页面特定脚本 -->
+    <script>
+        // 为学术交流页面添加搜索和筛选功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const filterOptions = document.querySelectorAll('.filter-option');
+            const activeFilter = document.getElementById('activeFilter');
+            
+            // 筛选按钮事件
+            filterOptions.forEach(option => {
+                option.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const filter = this.getAttribute('data-filter');
+                    activeFilter.textContent = this.textContent;
+                    
+                    // 这里实际应用中应调用筛选函数
+                    console.log(`应用筛选: ${filter}`);
+                });
+            });
+            
+            // 搜索功能
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                console.log(`搜索关键词: ${searchTerm}`);
+                
+                // 这里实际应用中应调用搜索函数
+            });
+        });
+    </script>
+</body>
+</html>
