@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>招生招聘 - 高能时域天文课题组</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="styles/style.css" rel="stylesheet">
+    <style>
+        .recruit-header {
+            background: linear-gradient(135deg, #0d3b66 0%, #1a659e 100%);
+            padding: 4rem 0;
+            color: white;
+            text-align: center;
+        }
+        
+        .recruit-section {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: transform 0.3s;
+            border-top: 4px solid #1a659e;
+        }
+        
+        .recruit-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .position-card {
+            border-left: 4px solid #1a659e;
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s;
+        }
+        
+        .position-card:hover {
+            background-color: #f8f9fa;
+            border-left-width: 6px;
+        }
+        
+        .application-btn {
+            background: linear-gradient(135deg, #1a659e 0%, #0d3b66 100%);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(26, 101, 158, 0.3);
+        }
+        
+        .application-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(26, 101, 158, 0.4);
+        }
+        
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+        
+        .benefit-icon {
+            width: 36px;
+            height: 36px;
+            background-color: #e6f0fa;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            color: #1a659e;
+            font-size: 1.1rem;
+        }
+        
+        .process-step {
+            position: relative;
+            padding-left: 2.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .step-number {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #1a659e 0%, #0d3b66 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .faq-item {
+            border-bottom: 1px solid #eee;
+            padding: 1.5rem 0;
+        }
+        
+        .faq-question {
+            font-weight: 600;
+            color: #1a659e;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-answer {
+            margin-top: 1rem;
+            padding-left: 1.5rem;
+            border-left: 3px solid #1a659e;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <div id="navbar-container"></div>
+
+    <!-- 页面标题 -->
+    <header class="recruit-header">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <h1 class="display-4 fw-bold">加入我们</h1>
+                    <p class="lead">探索宇宙奥秘，共创新知</p>
+                    <p>高能时域天文课题组诚邀优秀人才加入</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 招生招聘内容 -->
+    <main class="container py-5">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <!-- 招生信息 -->
+                <section class="recruit-section">
+                    <div class="d-flex align-items-center mb-4">
+                        <i class="fas fa-graduation-cap fa-2x me-3 text-primary"></i>
+                        <h2 class="mb-0">招生信息</h2>
+                    </div>
+                    <p class="text-muted mb-4">我们欢迎对高能天体物理、时域天文、计算天体物理等领域有浓厚兴趣的优秀学生加入课题组。</p>
+                    
+                    <div id="studentPositions"></div>
+                </section>
+                
+                <!-- 招聘信息 -->
+                <section class="recruit-section">
+                    <div class="d-flex align-items-center mb-4">
+                        <i class="fas fa-briefcase fa-2x me-3 text-primary"></i>
+                        <h2 class="mb-0">招聘信息</h2>
+                    </div>
+                    <p class="text-muted mb-4">课题组提供博士后、研究助理等多种科研岗位，诚邀海内外优秀人才加入。</p>
+                    
+                    <div id="staffPositions"></div>
+                </section>   
+                
+            </div>
+        </div>
+    </main>
+
+    <!-- 联系信息 -->
+    <section class="bg-light py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 text-center">
+                    <h2 class="mb-4">联系我们</h2>
+                    <p class="lead mb-4">如有任何问题，欢迎随时与我们联系</p>
+                    <div class="d-flex flex-wrap justify-content-center gap-3">
+                        <a href="mailto:hea-recruit@ustc.edu.cn" class="btn btn-primary btn-lg">
+                            <i class="fas fa-envelope me-2"></i>hea-recruit@ustc.edu.cn
+                        </a>
+                        <a href="tel:+8655163601234" class="btn btn-outline-primary btn-lg">
+                            <i class="fas fa-phone me-2"></i>+86-551-6360-1234
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>中国科大高能时域天文课题组</h5>
+                    <p>中国科学技术大学 物理学院 天文学系<br>安徽省合肥市金寨路96号</p>
+                </div>
+            </div>
+            <hr class="bg-light">
+        </div>
+    </footer>
+    
+    <!-- 脚本加载 -->
+    <script src="scripts/loadNavbar.js"></script>
+    <script src="scripts/loadRecruit.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
