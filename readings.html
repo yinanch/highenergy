@@ -242,49 +242,51 @@
 
     <!-- 主要内容 -->
     <main class="container mb-5">
-    <!-- 搜索和筛选区域 -->
-    <div class="search-container">
-        <div class="row">
-            <div class="col-md-8">
-                <div class="input-group">
-                    <span class="input-group-text bg-primary text-white"><i class="fas fa-search"></i></span>
-                    <input type="text" id="searchInput" class="form-control form-control-lg" placeholder="搜索书籍或文献...">
+        <!-- 搜索和筛选区域 -->
+        <div class="search-container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="input-group">
+                        <span class="input-group-text bg-primary text-white"><i class="fas fa-search"></i></span>
+                        <input type="text" id="searchInput" class="form-control form-control-lg" placeholder="搜索书籍或文献...">
+                    </div>
+                </div>
+                <div class="col-md-4 d-flex align-items-center">
+                    <div class="form-text">按书籍和文献分类</div>
                 </div>
             </div>
-            <div class="col-md-4 d-flex align-items-center">
-                <div class="form-text">按书籍和文献分类</div>
+            
+            <div class="category-filter mt-3">
+                <button class="category-btn active" data-category="all">全部读物</button>
+                <button class="category-btn" data-category="books">书籍</button>
+                <button class="category-btn" data-category="papers">经典文献</button>
             </div>
         </div>
         
-        <div class="category-filter mt-3">
-            <button class="category-btn active" data-category="all">全部读物</button>
-            <button class="category-btn" data-category="books">书籍</button>
-            <button class="category-btn" data-category="papers">经典文献</button>
+        <!-- 书籍部分 -->
+        <section class="mb-5">
+            <h2 class="section-title"><i class="fas fa-book me-2"></i>推荐书籍</h2>
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="booksContainer">
+                <!-- 书籍卡片将通过JavaScript加载 -->
+            </div>
+        </section>
+        
+        <!-- 经典文献部分 -->
+        <section>
+            <h2 class="section-title"><i class="fas fa-file-alt me-2"></i>经典文献</h2>
+            <div class="literature-list" id="papersContainer">
+                <!-- 文献条目将通过JavaScript加载 -->
+            </div>
+        </section>
+        
+        <!-- 无结果提示 -->
+        <div id="noResults" class="no-results" style="display: none;">
+            <i class="fas fa-book-open"></i>
+            <h3 class="mb-3">未找到匹配的读物</h3>
+            <p class="text-muted">请尝试不同的搜索关键词，或选择其他分类</p>
         </div>
-    </div>
-    
-    <!-- 书籍部分 -->
-    <section class="mb-5">
-        <h2 class="section-title"><i class="fas fa-book me-2"></i>推荐书籍</h2>
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="booksContainer">
-            <!-- 书籍卡片将通过JavaScript加载 -->
-        </div>
-    </section>
-    
-    <!-- 经典文献部分 -->
-    <section>
-        <h2 class="section-title"><i class="fas fa-file-alt me-2"></i>经典文献</h2>
-        <div class="literature-list" id="papersContainer">
-            <!-- 文献条目将通过JavaScript加载 -->
-        </div>
-    </section>
-    
-    <!-- 无结果提示 -->
-    <div id="noResults" class="no-results" style="display: none;">
-        <i class="fas fa-book-open"></i>
-        <h3 class="mb-3">未找到匹配的读物</h3>
-        <p class="text-muted">请尝试不同的搜索关键词，或选择其他分类</p>
-    </div>
+    </main>
+
 
     <<!-- 页脚 -->
     <footer class="bg-dark text-white py-4">

@@ -170,7 +170,7 @@ function initPage() {
             const backToTopBtn = document.querySelector('.back-to-top');
             if (backToTopBtn) {
                 window.addEventListener('scroll', function() {
-                    if (window.pageYOffset > 300) {
+                    if (window.scrollY > 300) {
                         backToTopBtn.classList.add('show');
                     } else {
                         backToTopBtn.classList.remove('show');
