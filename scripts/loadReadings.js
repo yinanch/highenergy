@@ -128,53 +128,91 @@ function filterAndRender(category = 'all') {
     checkResults();
 }
 
-// 初始化页面
-document.addEventListener('DOMContentLoaded', function() {
-    // 初始渲染
-    renderBooks(readingsData.books);
-    renderPapers(readingsData.papers);
-    
-    // 设置分类按钮事件
-    const categoryBtns = document.querySelectorAll('.category-btn');
-    categoryBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-            // 更新按钮状态
-            categoryBtns.forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
+// 初始化页面功能
+function initPage() {
+    // 加载数据
+    fetch('../data/readings.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('网络响应不正常');
+            }
+            return response.json();
+        })
+        .then(data => {
+            readingsData = data;
             
-            // 过滤和渲染
-            const category = this.getAttribute('data-category');
-            filterAndRender(category);
-        });
-    });
-    
-    // 搜索功能
-    const searchInput = document.getElementById('searchInput');
-    searchInput.addEventListener('input', () => {
-        const activeCategory = document.querySelector('.category-btn.active').getAttribute('data-category');
-        filterAndRender(activeCategory);
-    });
-    
-    // 返回顶部按钮功能
-    const backToTopBtn = document.querySelector('.back-to-top');
-    if (backToTopBtn) {
-        window.addEventListener('scroll', function() {
-            if (window.pageYOffset > 300) {
-                backToTopBtn.classList.add('show');
-            } else {
-                backToTopBtn.classList.remove('show');
+            // 初始渲染
+            renderBooks(data.books);
+            renderPapers(data.papers);
+            
+            // 设置分类按钮事件
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // 更新按钮状态
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // 过滤和渲染
+                    const category = this.getAttribute('data-category');
+                    filterAndRender(category);
+                });
+            });
+            
+            // 搜索功能
+            const searchInput = document.getElementById('searchInput');
+            searchInput.addEventListener('input', () => {
+                const activeCategory = document.querySelector('.category-btn.active').getAttribute('data-category');
+                filterAndRender(activeCategory);
+            });
+            
+            // 返回顶部按钮功能
+            const backToTopBtn = document.querySelector('.back-to-top');
+            if (backToTopBtn) {
+                window.addEventListener('scroll', function() {
+                    if (window.pageYOffset > 300) {
+                        backToTopBtn.classList.add('show');
+                    } else {
+                        backToTopBtn.classList.remove('show');
+                    }
+                });
+                
+                backToTopBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+        })
+        .catch(error => {
+            console.error('加载推荐读物数据失败:', error);
+            // 显示错误信息
+            const booksContainer = document.getElementById('booksContainer');
+            const papersContainer = document.getElementById('papersContainer');
+            
+            if (booksContainer) {
+                booksContainer.innerHTML = `
+                    <div class="col-12 text-center py-5">
+                        <i class="fas fa-exclamation-triangle fa-3x text-danger mb-3"></i>
+                        <h3>数据加载失败</h3>
+                        <p>无法加载书籍数据，请稍后再试。</p>
+                    </div>
+                `;
+            }
+            
+            if (papersContainer) {
+                papersContainer.innerHTML = `
+                    <div class="text-center py-5">
+                        <i class="fas fa-exclamation-triangle fa-3x text-danger mb-3"></i>
+                        <h3>数据加载失败</h3>
+                        <p>无法加载文献数据，请稍后再试。</p>
+                    </div>
+                `;
             }
         });
-        
-        backToTopBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    }
-})
+}
 
 // 当文档加载完成后初始化页面
 document.addEventListener('DOMContentLoaded', initPage);
